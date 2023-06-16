@@ -19,7 +19,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card px-3">
-                    
+
 
                    <div class="card-body">
                     <div class="mt-3">
@@ -47,10 +47,7 @@
                                 <label for="motif"  class="form-label">Motif</label>
                                 <input type="text" class="form-control"  required name="motif" id="motif" value="{{$conge->motif}}">
                               </div>
-                              <div class="mb-3">
-                                <label for="description"  class="form-label">Description</label>
-                               <textarea  class="form-control"name="description" id="description" value="{{$conge->description}}"cols="30" rows="10"></textarea>
-                              </div>
+
                               <div class="mb-3">
                                 <label for="debut_conges" class="form-label">Date Debut</label>
                                 <input type="date" class="form-control" required name="debut_conges" id="debut_conges" value="{{$conge->debut_conges}}">
@@ -61,6 +58,10 @@
 
 
                                 </div>
+                                <div class="mb-3">
+                                    <label for="description"  class="form-label">Description</label>
+                                   <textarea  class="form-control"name="description" id="description" value="{{$conge->description}}"cols="30" rows="10"></textarea>
+                                  </div>
 
                               <button type="submit" class="btn btn-primary">Enregistrer</button>
                              <button type="submit" class="btn btn-primary">Modifier</button>

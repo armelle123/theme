@@ -28,8 +28,8 @@ class CreateUsersTable extends Migration
             $table->string('profile_photo_path')->nullable();
             $table->string('archived');
             $table->string('deleted');
-            $table->string('poste');
-            $table->integer('deleted_by');
+             $table->string('poste');
+             $table->integer('deleted_by');
             $table->datetime('deleted_at');
             $table->timestamps();
             // $table->primary('id');

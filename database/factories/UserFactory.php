@@ -7,11 +7,14 @@ use Illuminate\Support\Str;
 use App\Models\User;
 class UserFactory extends Factory
 {
+    protected $model = User::class;
     /**
      * Define the model's default state.
      *
      * @return array
+     *
      */
+
     public function definition():array
     {
         return [
@@ -19,7 +22,7 @@ class UserFactory extends Factory
             'firstname' => $this->faker->firstname(),
             'lastname' => $this->faker->lastname(),
             'adresse' => $this->faker->text(),
-            'phone' => $this->faker->phoneNumber(),
+            'phone' => $this->faker->numberBetween(),
             'idrole' => 1,
             'poste' => $this->faker->text(),
             'poste_id' =>1,

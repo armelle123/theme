@@ -46,10 +46,7 @@
                                 <label for="motif"  class="form-label">Motif</label>
                                 <input type="text" class="form-control"  required name="motif" id="motif">
                               </div>
-                              <div class="mb-3">
-                                <label for="description"  class="form-label">Description</label>
-                               <textarea  class="form-control"name="description" id="description" cols="30" rows="10"></textarea>
-                              </div>
+
                               <div class="mb-3">
                                 <label for="debut_conges" class="form-label">Date Debut</label>
                                 <input type="date" class="form-control" required name="debut_conges" id="debut_conges">
@@ -58,8 +55,11 @@
                                   <label for="fin_conges" class="form-label">Date Fin</label>
                                   <input type="date" class="form-control" required name="fin_conges" id="fin_conges">
 
-
                                 </div>
+                                <div class="mb-3">
+                                    <label for="description"  class="form-label">Description</label>
+                                   <textarea  class="form-control"name="description" id="description" cols="30" rows="10"></textarea>
+                                  </div>
 
                               <button type="submit" class="btn btn-primary">Enregistrer</button>
 

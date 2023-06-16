@@ -36,9 +36,11 @@
 
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">nom offre</th>
+                  <th scope="col">departement</th>
+                  <th scope="col">titre offre</th>
+                  <th scope="col">type offre</th>
                   <th scope="col">description offre</th>
-                  <th scope="col">statut offre</th>
+                  {{-- <th scope="col">statut offre</th> --}}
                   <th scope="col">date debut</th>
                   <th scope="col">date fin</th>
                   <th scope="col">action</th>
@@ -46,22 +48,21 @@
                 </tr>
               </thead>
               <tbody>
+                 {{-- @dd($offres) --}}
+                {{-- {{$offres['nom']}} --}}
               @foreach($offres as $offre)
                 <tr>
                   <th scope="row">{{$loop->index +1}}</th>
                   {{-- <td>{{$offre->user->firstname}}</td> --}}
+                  <td>{{$offre->nom}}</td>
                   <td>{{$offre->nom_offre}}</td>
+                  <td>{{$offre->type_offre}}</td>
                   <td>{{$offre->description_offre}}</td>
-                  <td>{{$offre->statut_offre}}</td>
+                  {{-- <td>{{$offre->statut_offre}}</td> --}}
                   <td>{{$offre->date_debut_offre}}</td>
                   <td>{{$offre->date_fin_offre}}</td>
-
-
-
-
-
                   <td>
-                    <a href="{{ route('offre.edit',['offre'=>$offre->offre_id]) }}" class="btn btn-info">Editer</a>
+                    <a href="{{route('offre.edit',['offre'=>$offre->offre_id]) }}" class="btn btn-info">Editer</a>
                     <a href="#" class="btn btn-danger" onclick="if(confirm('voulez vous vraiment supprimer cet etudiant?')){document.getElementById('form-{{$offre->offre_id}}').submit() }">supprimer</a>
 
                     <form id="form-{{$offre->offre_id}}"  action="{{route('offres.supprimer',['offre'=>$offre->offre_id])}}" method="post">

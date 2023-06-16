@@ -37,17 +37,32 @@
                         </ul>
                       </div>
                         @endif
-                          <form style="width:65%;" method="post" action="{{route('fichiers.ajouter')}}">
+                          <form  action="{{route('fichiers.ajouter')}}" method="post"  style="width:65%;" enctype ="multipart/form-data">
                             @csrf
-                              <div class="mb-3">
-                                <label for="titre_fichier"  class="form-label">Titre</label>
-                                <input type="text" class="form-control"  required name="titre_fichier" id="titre_fichier">
+                              <div class="form-group">
+                                <label for="titre_fichier">Titre</label>
+                                <input type="text"  required name="titre_fichier"  class="form-control" placeholder="Entrer le Titre" >
                               </div>
-                              <label for="nature_fichier"  class="form-label">Nature</label>
-                                <input type="text" class="form-control"  required name="nature_fichier" id="nature_fichier">
+                              <div class="form-group">
+                                <label for="description_fichier">Description</label>
+                                <textarea required name="description_fichier"  class="form-control" placeholder="Entrer la Description"></textarea>
                               </div>
-                              <label for="chemin_fichier"  class="form-label">chemin</label>
-                                <input type="text" class="form-control"  required name="chemin_fichier" id="chemin_fichier">
+
+                              <div class="form-group">
+                                <label for="type_fichier">Type</label>
+                                <select   class="form-control" name="type_fichier" id="type_fichier">
+                                    <option value="pdf">PDF</option>
+                                    <option value="doc">Word</option>
+                                    <option value="xls">Excel</option>
+                                    <option value="png">PNG</option>
+                                    <option value="jpg">JPEG</option>
+                                </select>
+
+                              </div>
+
+                              <div class="form-group">
+                                <label for="chemin_fichier">selectionner un fichier</label>
+                                <input type="file"   class="form-control" name="chemin_fichier" id="chemin_fichier">
                               </div>
                               <button type="submit" class="btn btn-primary">Enregistrer</button>
                               <a href="{{route('fichiers')}}"class="btn btn-danger">Annuler</a>

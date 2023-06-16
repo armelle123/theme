@@ -21,7 +21,7 @@ class CreateCandidat extends Migration
             $table->integer('tel_cand');
             $table->string('cv_cand');
             $table->string('lettremotiv_cand');
-            $table->string('id_candidat');
+           
             $table->string('diplome_bts_cand');
             $table->string('diplome_licence_cand');
             $table->string('diplome_masteur_cand');

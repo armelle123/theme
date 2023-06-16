@@ -13,10 +13,16 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">conges</a></li> --}}
                                        {{-- <li class="breadcrumb-item active"><a href="javascript:void(0)">liste des conges</a></li> --}}
-                </ol>
-            </div>
+                {{-- </ol>
+            </div> --}}
         </div>
         <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card px-3">
+
+                   <div class="card-body">
+                    <div class="mt-3">
+
 
             <div class= "d-flex justify-content-between mb-4">
 
@@ -49,6 +55,7 @@
                 </tr>
               </thead>
               <tbody>
+                {{-- @dd($conges) --}}
               @foreach($conges as $conge)
                 <tr>
                   <th scope="row">{{$loop->index +1}}</th>

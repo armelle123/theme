@@ -9,7 +9,7 @@ class Conges extends Model
 {
     use HasFactory;
     protected $primaryKey= 'conges_id';
-    protected $tables='conges';
+    protected $table='conges';
 
     protected $fillable = [
 

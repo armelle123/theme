@@ -68,5 +68,16 @@ class User extends Authenticatable
     public function fichiers(){
         return $this->hasMany(Fichiers::class);
     }
+    public function calculsalaire($userID){
+        $user = User::findorfail($userID);
+        $salaires =$user->salaires;
+        $brut_salaire = $this->brut_salaire;
+        $cotisation = $this->cotisation;
+        $impots = $this->impots;
+        $retenues_salaire = $this->retenues_salaire;
+        $net_salaire = $brut_salaire - $cotisation - $impots -  $retenues_salaire;
+        return view('salaire',['user'=>$user,'salaire' =>$salaires, 'net_salaire' =>$net_salaire]);
+    }
+
 }
 

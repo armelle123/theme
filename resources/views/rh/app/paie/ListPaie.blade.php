@@ -16,7 +16,13 @@
                 </ol> --}}
             </div>
         </div>
-        <div class="row justify-content-center">
+        {{-- <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card px-3">
+
+                   <div class="card-body">
+                    <div class="mt-3"> --}}
+         <div class="row justify-content-center">
 
             <div class= "d-flex justify-content-between mb-4">
 
@@ -36,11 +42,11 @@
 
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">nature salaire</th>
-                  <th scope="col">montant salaire</th>
-                  <th scope="col">periode salaire</th>
-                  <th scope="col">bonus</th>
-                  <th scope="col">avance</th>
+                  <th scope="col">Utilisateur</th>
+                  <th scope="col">Montant</th>
+                  <th scope="col">Mois</th>
+                  <th scope="col">Commentaire</th>
+                  <th scope="col">Type </th>
                   <th scope="col">action</th>
 
                 </tr>
@@ -49,15 +55,17 @@
               @foreach($salaires as $salaire)
                 <tr>
                   <th scope="row">{{$loop->index +1}}</th>
-                  {{-- <td>{{$salaire->user->firstname}}</td> --}}
-                  <td>{{$salaire->nature_salaire}}</td>
+                  <td>{{$salaire->firstname}}</td>
+                   {{-- <td>{{$salaire->users->firstname}}</td> --}}
+                  {{-- <td>{{$salaire->nature_salaire}}</td> --}}
                   <td>{{$salaire->montant_salaire}}</td>
-                  <td>{{$salaire->periode_salaire}}</td>
-                  <td>{{$salaire->bonus_salaire}}</td>
-                  <td>{{$salaire->avance_salaire}}</td>
+                  <td>{{$salaire->mois}}</td>
+                  <td>{{$salaire->commentaire}}</td>
+                  <td>{{$salaire->type_salaires}}</td>
+
 
                   <td>
-                    <a href="{{ route('salaire.edit',['salaire'=>$salaire->salaire_id]) }}" class="btn btn-info">Editer</a>
+                    <a href="{{route('salaire.edit',['salaire'=>$salaire->salaire_id]) }}" class="btn btn-info">Editer</a>
                     <a href="#" class="btn btn-danger" onclick="if(confirm('voulez vous vraiment supprimer cette paie ?')){document.getElementById('form-{{$salaire->salaire_id}}').submit() }">supprimer</a>
 
                     <form id="form-{{$salaire->salaire_id}}"  action="{{route('salaires.supprimer',['salaire'=>$salaire->salaire_id])}}" method="post">
@@ -70,7 +78,7 @@
 
                 @endforeach
 
-                </div>
+
               </tbody>
 
             </table>

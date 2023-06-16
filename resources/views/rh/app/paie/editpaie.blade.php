@@ -43,28 +43,43 @@
 
                             @csrf
                             <input type="hidden" name="_method" value="put">
-                              <div class="mb-3">
+
+                              {{-- <div class="mb-3">
                                 <label for="nature_salaire"  class="form-label">Nature</label>
                                 <input type="text" class="form-control"  required name="nature_salaire" id="nature_salaire" value="{{$salaire->nature_salaire}}">
-                              </div>
-                              <label for="montant_salaire"  class="form-label">Montant</label>
-                                <input type="integer" class="form-control"  required name="montant_salaire" id="montant_salaire" value="{{$salaire->montant_salaire}}">
-                              </div>
-                              <label for="bonus_salaire"  class="form-label">Bonus</label>
-                                <input type="integer" class="form-control"  required name="bonus_salaire" id="bonus_salaire" value="{{$salaire->bonus_salaire}}">
-                              </div>
-                              <label for="avance_salaire"  class="form-label">Avance</label>
-                                <input type="integer" class="form-control"  required name="avance_salaire" id="avance_salaire" value="{{$salaire->avance_salaire}}">
-                              </div>
+                              </div> --}}
                               <div class="mb-3">
-                                <label for="date_salaire" class="form-label">Date Debut</label>
-                                <input type="date" class="form-control" required name="date_salaire" id="date_salaire" value="{{$salaire->date_salaire}}">
-                              </div>
-                              <div class="mb-3">
-                                  <label for="periode_salaire" class="form-label">Date Fin</label>
-                                  <input type="date" class="form-control" required name="periode_salaire" id="periode_salaire" value="{{$salaire->periode_salaire}}">
-
+                                <label for="montant_salaire"  class="form-label">Montant</label>
+                                  <input type="integer" class="form-control"  required name="montant_salaire" id="montant_salaire">
                                 </div>
+                                <div class="mb-3">
+                                <label for="mois"  class="form-label">Mois</label>
+                                  <input type="month" class="form-control"  required name="mois" id="mois">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="exampleInputPassword1" class="form-label">Users</label>
+                                  <select class="form-control"  required name="id">
+                                      <option value=""></option>
+                                      @foreach($users as $user)
+                                      <option value="{{$user->id}}">{{$user->firstname}}</option>
+                                      @endforeach
+                                  </select>
+                                </div>
+
+                                 <div class="mb-3">
+                                  <label for="exampleInputPassword1" class="form-label">Types</label>
+                                  <select  class="form-control" name="type_salaires" id="type_salaires">
+                                   <option value="Avances">Avances</option>
+                                    <option value="Total">Total</option>
+
+                                    </select>
+                                   </div>
+
+                                   <div class="mb-3">
+                                      <label for="commentaire"  class="form-label">Commantaires</label>
+                                     <textarea  class="form-control"name="commentaire" id="commentaire" cols="30" rows="10"></textarea>
+                                    </div>
+
                               <button type="submit" class="btn btn-primary">Enregistrer</button>
                               <button type="submit" class="btn btn-primary">Modifier</button>
                               <a href="{{route('salaires')}}"class="btn btn-danger">Annuler</a>

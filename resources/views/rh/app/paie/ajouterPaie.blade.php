@@ -41,28 +41,41 @@
 
 
                             @csrf
+
                               <div class="mb-3">
-                                <label for="nature_salaire"  class="form-label">Nature</label>
-                                <input type="text" class="form-control"  required name="nature_salaire" id="nature_salaire">
-                              </div>
                               <label for="montant_salaire"  class="form-label">Montant</label>
                                 <input type="integer" class="form-control"  required name="montant_salaire" id="montant_salaire">
                               </div>
-                              <label for="bonus_salaire"  class="form-label">Bonus</label>
-                                <input type="integer" class="form-control"  required name="bonus_salaire" id="bonus_salaire">
-                              </div>
-                              <label for="avance_salaire"  class="form-label">Avance</label>
-                                <input type="integer" class="form-control"  required name="avance_salaire" id="avance_salaire">
+                              <div class="mb-3">
+                              <label for="mois"  class="form-label">Mois</label>
+                                <input type="month" class="form-control"  required name="mois" id="mois">
                               </div>
                               <div class="mb-3">
-                                <label for="date_salaire" class="form-label">Date Debut</label>
-                                <input type="date" class="form-control" required name="date_salaire" id="date_salaire">
+                                <label for="exampleInputPassword1" class="form-label">Users</label>
+                                <select class="form-control"  required name="user_id">
+                                    <option value=""></option>
+                                    @foreach($users as $user)
+                                    <option value="{{$user->id}}">{{$user->firstname}}</option>
+                                    @endforeach
+                                </select>
                               </div>
-                              <div class="mb-3">
-                                  <label for="periode_salaire" class="form-label">Date Fin</label>
-                                  <input type="date" class="form-control" required name="periode_salaire" id="periode_salaire">
 
-                                </div>
+                               <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Types</label>
+                                <select  class="form-control" name="type_salaires" id="type_salaires">
+                                 <option value="Avances">Avances</option>
+                                  <option value="Total">Total</option>
+
+                                  </select>
+                                 </div>
+
+                                 <div class="mb-3">
+                                    <label for="commentaire"  class="form-label">Commantaires</label>
+                                   <textarea  class="form-control"name="commentaire" id="commentaire" cols="30" rows="10"></textarea>
+                                  </div>
+
+
+
                               <button type="submit" class="btn btn-primary">Enregistrer</button>
                               <a href="{{route('salaires')}}"class="btn btn-danger">Annuler</a>
                             </form>

@@ -190,7 +190,7 @@
                             </li>
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                <i class="mdi mdi-account"></i>{{ Auth::user()->email}}
+                                <i class="mdi mdi-account"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="" class="dropdown-item">
@@ -266,8 +266,8 @@
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                         class="fa fa-archive"></i><span class="nav-text">Archives</span></a>
                 <ul aria-expanded="false">
-                    <li><a href="">Gestion des Archives</a></li>
-                    <li><a href="">ajouter une Archive</a></li>
+                    <li><a href="{{route('fichiers')}}">Gestion des Archives</a></li>
+                    <li><a href="{{route('fichiers.ajouter')}}">ajouter une Archive</a></li>
 
                 </ul>
                     </li>

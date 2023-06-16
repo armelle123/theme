@@ -9,15 +9,14 @@ class Salaires extends Model
 {
     use HasFactory;
     protected $primaryKey='salaire_id';
-    protected $tables='salaire';
+    protected $table='salaires';
 
     protected $fillable = [
-        'nature_salaire',
+
         'montant_salaire',
-        'date_salaire',
-        'periode_salaire',
-        'bonus_salaire',
-        'avance_salaire',
+        'mois',
+        'commentaire',
+        'type_salaires',
         'user_id',
     ];
     public function User(){

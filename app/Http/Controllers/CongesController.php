@@ -28,7 +28,7 @@ class CongesController extends Controller
 
 
 
-  public function store (Request $request){
+  public function store (Request $request ){
 
     $request->validate([
       "motif" => "required",
@@ -36,8 +36,15 @@ class CongesController extends Controller
       "fin_conges" => "required",
 
     ]);
+    //on decommente tout
 
     //Conges ::create($request->all());
+    // if ($user){
+    //     $user_id = $user->id;
+    //   }
+    //   else{, $id,$user,$user_id
+
+    //   }
 
     Conges::create([
       "motif"=>$request->motif,
@@ -45,8 +52,10 @@ class CongesController extends Controller
       "fin_conges" =>$request->fin_conges,
       "description" =>$request->description,
       "statut_approuver_conges" =>0,
-      "user_id" =>Auth::user()->id,
+      "user_id"=>Auth::user()->id,
+
       "commentaire" =>'',
+
 
 
     ]);
@@ -55,7 +64,7 @@ class CongesController extends Controller
 
   }
 
-  
+
 
 
 

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Postes extends Model
 {
     protected $primarykey='poste_id';
-    protected $tables='poste';
+    protected $table='poste';
 
     protected $fillable = [
 

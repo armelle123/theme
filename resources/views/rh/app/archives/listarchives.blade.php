@@ -9,19 +9,24 @@
                     {{--                    <p class="mb-0">Your business dashboard template</p>--}}
                 </div>
             </div>
-            <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+            {{-- <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">fichiers</a></li>
                                        <li class="breadcrumb-item active"><a href="javascript:void(0)">liste des fichiers</a></li>
                 </ol>
-            </div>
+            </div> --}}
         </div>
         <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card px-3">
+
+                   <div class="card-body">
+                    <div class="mt-3">
 
             <div class= "d-flex justify-content-between mb-4">
 
                 {{$fichiers->links()}}
-                <div><a href="{{route('fichiers.create')}}" class="btn btn-primary"> ajouter une nouvelle paie</a></div>
+                <div><a href="{{route('fichiers.create')}}" class="btn btn-primary"> ajouter un nouveau fichier</a></div>
                </div>
 
                @if (session()->has("successDelete"))
@@ -36,12 +41,12 @@
 
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">titre fichier</th>
-                  <th scope="col">nature fichier</th>
-                  <th scope="col">chemin fichier</th>
+                  <th scope="col">employes</th>
+                  <th scope="col">Titre Fichier</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Type Fichier</th>
+                  <th scope="col">Chemin Fichier</th>
                   <th scope="col">action</th>
-
-
 
 
                 </tr>
@@ -52,12 +57,13 @@
                   <th scope="row">{{$loop->index +1}}</th>
                   <td>{{$fichier->user->firstname}}</td>
                   <td>{{$fichier->titre_fichier}}</td>
-                  <td>{{$fichier->nature_fichier}}</td>
+                  <td>{{$fichier->type_fichier}}</td>
+                  <td>{{$fichier->description_fichier}}</td>
                   <td>{{$fichier->chemin_fichier}}</td>
                   <td>
-                    <a href="#" class="btn btn-info">Editer</a>
-                    <a href="#" class="btn btn-danger" onclick="if(confirm('voulez vous vraiment supprimer cette paie ?')){document.getElementById("form-{{$fichier->fichier_id}}").submit() }">supprimer</a>
-                <form id="form-{{$fichier->id}}" action="{{route('fichiers.supprimer',['fichier'=>$fichier->fichier_id])}}" method="post">
+                    {{-- <a href="{{ route('fichiers.edit',['fichier'=>$fichier->fichier_id]) }}" class="btn btn-info">Editer</a> --}}
+                    <a href="#" class="btn btn-danger" onclick="if(confirm('voulez vous vraiment supprimer cette paie ?')){document.getElementById('form-{{$fichier->fichier_id}}').submit()}">supprimer</a>
+                <form id="form-{{$fichier->fichier_id}}" action="{{route('fichiers.supprimer',['fichier'=>$fichier->fichier_id])}}" method="post">
                       @csrf
                       <input type="hidden" name="_method" value="delete">
 

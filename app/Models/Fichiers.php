@@ -8,12 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Fichiers extends Model
 {
     use HasFactory;
-    protected $primarykey='fichier_id';
-    protected $tables='fichier';
+    protected $primaryKey= 'fichier_id';
+    protected $table='fichiers';
 
     protected $fillable = [
         'titre_fichier',
-        'nature_fichier',
+        'type_fichier',
+        'description_fichier',
         'chemin_fichier',
         'user_id',
 

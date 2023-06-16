@@ -42,26 +42,41 @@
 
                             @csrf
                             <input type="hidden" name="_method" value="put">
-                              <div class="mb-3">
-                              <label for="nom_offre"  class="form-label">Nom</label>
-                              <input type="text" class="form-control"  required name="nom_offre" id="nom_offre" value="{{$offre->nom}}">
-                            </div>
-                                <div class="mb-3">
-                              <label for="statut_offre"  class="form-label">statut</label>
-                                <input type="text" class="form-control"  required name="statut_offre" id="statut_offre" value="{{$offre->statut_offre}}">
+                            <div class="mb-3">
+                                <label for="nom_offre" class="form-label">Titre de l'offre</label>
+                                <input type="text" class="form-control"  required name="nom_offre" id="nom_offre ">
                               </div>
+
+
+
+                               <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">departement</label>
+                                <select class="form-control"  required name="departement_id">
+                                    <option value=""></option>
+                                    @foreach($departements as $departement)
+                                    <option value="{{$departement->departement_id}}">{{$departement->nom}}</option>
+                                    @endforeach
+                                </select>
+                              </div>
+                              
+                              <div class="mb-3">
+                                <label for="type_offre"  class="form-label">TYPE offre</label>
+                               <textarea  class="form-control"name="type_offre" id="type_offre"></textarea>
+                              </div>
+
+
+
                               <div class="mb-3">
                                 <label for="date_debut_offre" class="form-label">Date Debut</label>
-                                <input type="date" class="form-control" required name="date_debut_offre" id="date_debut_offre" value="{{$offre->date_debut_offre}}">
+                                <input type="date" class="form-control" required name="date_debut_offre" id="date_debut_offre">
                               </div>
                               <div class="mb-3">
                                   <label for="date_fin_offre" class="form-label">Date Fin</label>
-                                  <input type="date" class="form-control" required name="date_fin_offre" id="date_fin_offre" value="{{$offre->date_fin_offre}}">
+                                  <input type="date" class="form-control" required name="date_fin_offre" id="date_fin_offre">
                                 </div>
-
                                 <div class="mb-3">
                                     <label for="description_offre"  class="form-label">Description</label>
-                                   <textarea  class="form-control"name="description_offre" id="description_offre" cols="30" rows="10" value="{{$offre->description_offre}}"></textarea>
+                                   <textarea  class="form-control"name="description_offre" id="description_offre" cols="30" rows="10"></textarea>
                                   </div>
 
                                   {{-- <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -70,7 +85,6 @@
                                         <li class="breadcrumb-item active"><a href="javascript:void(0)">Summernote</a></li>
                                     </ol>
                                 </div> --}}
-                            </div>
                             <!-- row -->
                             <div class="row">
                                 <div class="col-xl-12 col-xxl-12">
@@ -81,33 +95,22 @@
                                         <div class="card-body">
                                             <div class="summernote"></div>
                                         </div>
-                              <button type="submit" class="btn btn-primary">Enregistrer</button>
-                              <button type="submit" class="btn btn-primary">Modifier</button>
-                              <a href="{{route('offres')}}"class="btn btn-danger">Annuler</a>
 
+                                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                        <button type="submit" class="btn btn-primary">Modifier</button>
+                                        <a href="{{route('salaires')}}"class="btn btn-danger">Annuler</a>
+                                      </form>
 
+                                 </div>
 
+                              </div>
+                          </div>
+                      </div>
+                  </div>
 
-                                        </div>
-                                    </div>
+              </div>
 
-                                </div>
+          @stop
+          @section('script')
 
-
-
-
-
-                       </div>
-                    </form>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-@stop
-@section('script')
-
-@endsection
+          @endsection

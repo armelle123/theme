@@ -6,9 +6,9 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>PROGRAMMATION</h4>
-                    <p><em>Nous sommes a la recherche de jeunes dynamiques ayant un excellent bilan scolaire  prêt à faire un pas dans le monde professionnel
-                    </em></p>
+                    <h4>{{ $offre->nom_offre }}</h4>
+                    <p><em>{{ $offre->description_offre }}
+                    </em>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -43,7 +43,7 @@
 
 
 
-         <form  method="post" action="{{route('site.offre.postuler')}}" enctype="multipart/form-data">
+         <form  method="POST" action="{{route('site.offre.postuler')}}" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="offre_id" value="{{ $offre->offre_id}}">
 
@@ -56,12 +56,9 @@
 
 
 
+
                 <label for="email_cand">Email<span style="margin-left:4px;color:#ff4d4f">*</span> </label>
                 <input type="email" class="form-control" id="email_cand" name="email_cand" required>
-
-
-                <label for="email_confirmer_cand">Email-Verify<span style="margin-left:4px;color:#ff4d4f">*</span> </label>
-                <input type="email" class="form-control" id="email_confirmer_cand" name="email_confirmer_cand" required>
 
                 <label for="tel_cand">Telephone<span style="margin-left:4px;color:#ff4d4f">*</span> </label>
                 <input type="tel" class="form-control" id="tel_cand" name="tel_cand" required>
@@ -79,12 +76,12 @@
                 <input type="file" class="form-control" id="diplome_bts_cand" name="diplome_bts_cand" accept=".pdf,.doc,.docs"required>
 
 
-                <label for="diplome_licence_cand">Diplome Licence<span style="margin-left:4px;color:#ff4d4f">*</span> </label>
-                <input type="file" class="form-control" id="diplome_licence_cand" name="diplome_licence_cand" accept=".pdf,.doc,.docs"required>
+                <label for="diplome_licence_cand">Diplome Licence<span style="margin-left:4px;color:#ff4d4f"></span> </label>
+                <input type="file" class="form-control" id="diplome_licence_cand" name="diplome_licence_cand" accept=".pdf,.doc,.docs">
 
 
-                <label for="diplome_masteur_cand">Diplome Masteur<span style="margin-left:4px;color:#ff4d4f">*</span> </label>
-                <input type="file" class="form-control" id="diplome_masteur_cand" name="diplome_masteur_cand" accept=".pdf,.doc,.docs"required>
+                <label for="diplome_masteur_cand">Diplome Masteur<span style="margin-left:4px;color:#ff4d4f"></span> </label>
+                <input type="file" class="form-control" id="diplome_masteur_cand" name="diplome_masteur_cand" accept=".pdf,.doc,.docs">
 
 
 

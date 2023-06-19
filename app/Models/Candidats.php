@@ -10,7 +10,7 @@ class Candidats extends Model
     use HasFactory;
 
     protected $primaryKey='candidat_id';
-    protected $table='candidat';
+    protected $table='candidats';
     protected $fillable = [
 
         'nom_cand',
@@ -19,7 +19,6 @@ class Candidats extends Model
         'tel_cand',
         'cv_cand',
         'lettremotiv_cand',
-     
         'diplome_bts_cand',
         'diplome_licence_cand',
         'diplome_masteur_cand',

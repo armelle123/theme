@@ -84,10 +84,11 @@ Route::get("/fichiers/{fichier}", [FichiersController::class,"update"])->name('f
 
 Route::get('/site', [SiteController::class, 'index'])->name('site.offre');
 Route::get('/site/offre/detail/{offre_id}', [SiteController::class, 'detail'])->name('site.offre.detail');
-Route::post('/site/offre/postuler', [SiteController::class, 'postuler'])->name('site.offre.postuler');
+ Route::post('/site/offre/postuler', [SiteController::class, 'postuler'])->name('site.offre.postuler');
+Route::GET('/site/offre/postuler', [SiteController::class, 'enregistrer']);
 // Route::get('/site/offre/ajouter', [SiteController::class,'ajouter'])->name('site.offre.ajouter');
 
-
+Route::get('/candidats',[CandidatsController::class,'index'])->name('candidats');
 Route::get('/candidat/create', [CandidatsController::class,'create'])->name('candidat.create');
 Route::post('/save', [CandidatsController::class,'store'])->name('candidat.store');
 

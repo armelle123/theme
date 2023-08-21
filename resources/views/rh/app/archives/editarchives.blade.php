@@ -9,13 +9,13 @@
                     {{--                    <p class="mb-0">Your business dashboard template</p>--}}
                 </div>
             </div>
-            <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+            {{-- <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">fichiers</a></li>
                                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Ajouter</a></li>
                 </ol>
             </div>
-        </div>
+        </div> --}}
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card px-3">
@@ -39,16 +39,16 @@
                         @endif
                           <form  action="{{route('fichiers.ajouter')}}" method="post"  style="width:65%;" enctype ="multipart/form-data">
                             @csrf
-                              <div class="form-group">
+                              <div class="form-group" >
                                 <label for="titre_fichier">Titre</label>
                                 <input type="text"  required name="titre_fichier"  class="form-control" placeholder="Entrer le Titre" >
                               </div>
-                              <div class="form-group">
+                              <div class="form-group" >
                                 <label for="description_fichier">Description</label>
                                 <textarea required name="description_fichier"  class="form-control" placeholder="Entrer la Description"></textarea>
                               </div>
 
-                              <div class="form-group">
+                              <div class="form-group" >
                                 <label for="type_fichier">Type</label>
                                 <select   class="form-control" name="type_fichier" id="type_fichier">
                                     <option value="pdf">PDF</option>

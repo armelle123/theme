@@ -25,7 +25,7 @@
                         <h4 class="card-title">Card Title</h4>
                     </div>
                     <div class="card-body">
-                        <ul class="list-group">
+                        <ul class="list-group" style="color:black"  style="font-size: 20px;">
                             @foreach ($candidats as $candidat)
                             <p>{{$candidat->nom}}</p>
                             <p>{{$candidat->prenom_cand}}</p>
@@ -44,9 +44,9 @@
 
                         </ul>
                     </div>
-                    <div class="card-footer">
+                    {{-- <div class="card-footer">
                         Card footer
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

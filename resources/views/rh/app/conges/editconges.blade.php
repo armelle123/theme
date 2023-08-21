@@ -22,9 +22,10 @@
 
 
                    <div class="card-body">
+                    @include('_partial._flash-message')
                     <div class="mt-3">
 
-                        @if (session()->has("success"))
+                        {{-- @if (session()->has("success"))
                         <div class="alert alert-success">
                           <h3>{{session()->get('success')}}</h3>
                         </div>
@@ -37,35 +38,35 @@
                           @endforeach
                         </ul>
                       </div>
-                        @endif
-                          <form style="width:65%;" method="post" action="{{route('conges.edit',['conge'=>$conge->conges_id])}}">
+                        @endif --}}
+                          <form style="color:black"; method="post" action="{{route('conges.edit',['conge'=>$conge->conges_id])}}">
 
 
                             @csrf
                            <input type="hidden" name="_method" value="put">
                               <div class="mb-3">
-                                <label for="motif"  class="form-label">Motif</label>
+                                <label for="motif"  class="form-label" >Motif</label>
                                 <input type="text" class="form-control"  required name="motif" id="motif" value="{{$conge->motif}}">
                               </div>
 
                               <div class="mb-3">
-                                <label for="debut_conges" class="form-label">Date Debut</label>
+                                <label for="debut_conges" class="form-label" >Date Debut</label>
                                 <input type="date" class="form-control" required name="debut_conges" id="debut_conges" value="{{$conge->debut_conges}}">
                               </div>
                               <div class="mb-3">
-                                  <label for="fin_conges" class="form-label">Date Fin</label>
+                                  <label for="fin_conges" class="form-label" >Date Fin</label>
                                   <input type="date" class="form-control" required name="fin_conges" id="fin_conges" value="{{$conge->fin_conges}}">
 
 
                                 </div>
                                 <div class="mb-3">
-                                    <label for="description"  class="form-label">Description</label>
+                                    <label for="description"  class="form-label" >Description</label>
                                    <textarea  class="form-control"name="description" id="description" value="{{$conge->description}}"cols="30" rows="10"></textarea>
                                   </div>
 
-                              <button type="submit" class="btn btn-primary">Enregistrer</button>
-                             <button type="submit" class="btn btn-primary">Modifier</button>
-                              <a href="{{route('conges')}}"class="btn btn-danger">Annuler</a>
+                              <button type="submit" class="btn btn-primary" >Enregistrer</button>
+                             <button type="submit" class="btn btn-primary" >Modifier</button>
+                              <a href="{{route('conges')}}"class="btn btn-danger" >Annuler</a>
                             </form>
 
                        </div>

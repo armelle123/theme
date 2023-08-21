@@ -16,21 +16,23 @@
                 </ol>
             </div>
         </div>
-        <div class="row justify-content-center">
+
+        <div class="row">
             <div class="col-md-12">
                 <div class="card px-3">
 
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-3 col-sm-6">
-                                <a href="">
+                                <a href="{{ route('fichiers') }}">
                                     <div class="card">
                                         <div class="stat-widget-one card-body">
                                             <div class="stat-icon d-inline-block">
                                                 <i class="fa fa-dollar "></i>
                                             </div>
                                             <div class="stat-content d-inline-block">
-                                                <div class="stat-text">En cours</div>
+                                                <div class="stat-text">Archives</div>
+                                                {{ count($fichiers)}}
                                                 <div class="stat-digit"></div>
                                             </div>
                                         </div>
@@ -38,14 +40,16 @@
                                 </a>
                             </div>
                             <div class="col-lg-3 col-sm-6">
-                                <a href="">
+                                <a href="{{ route('users') }}">
                                     <div class="card">
                                         <div class="stat-widget-one card-body">
                                             <div class="stat-icon d-inline-block">
                                                 <i class="fa fa-angle-double-down text-success border-success"></i>
                                             </div>
                                             <div class="stat-content d-inline-block">
-                                                <div class="stat-text">Terminés</div>
+                                                <div class="stat-text">utilisateurs </div>
+
+                                                {{ count($users)}}
                                                 <div class="stat-digit" id="entre"></div>
                                             </div>
                                         </div>
@@ -53,30 +57,49 @@
                                 </a>
                             </div>
                             <div class="col-lg-3 col-sm-6">
-                                <a href="">
+                                <a href="{{ route('offres') }}">
                                     <div class="card">
                                         <div class="stat-widget-one card-body">
                                             <div class="stat-icon d-inline-block">
                                                 <i class="fa fa-angle-double-up text-warning border-warning"></i>
                                             </div>
                                             <div class="stat-content d-inline-block">
-                                                <div class="stat-text">Clients</div>
+                                                <div class="stat-text">offres</div>
+                                                {{ count($offre)}}
                                                 <div class="stat-digit" id="sortie"></div>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
                             </div>
-                            <div class="col-lg-3 col-sm-6">
-                                <a href="">
+                            <div class="col-lg-3 col-sm-6 ">
+                                <a href="{{ route('salaires') }}">
                                     <div class="card">
                                         <div class="stat-widget-one card-body">
                                             <div class="stat-icon d-inline-block">
                                                 <i class="fa fa-dashcube text-success border-success"></i>
                                             </div>
                                             <div class="stat-content d-inline-block">
-                                                <div class="stat-text">Dépenses</div>
+                                                <div class="stat-text">salaires</div>
+                                                {{ count($salaire)}}
                                                 <div class="stat-digit" id="tache"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-3 col-sm-6 ">
+                                <a href="{{ route('conges') }}">
+                                    <div class="card">
+                                        <div class="stat-widget-one card-body">
+                                            <div class="stat-icon d-inline-block">
+                                                <i class="fa fa-dollar "></i>
+                                            </div>
+                                            <div class="stat-content d-inline-block">
+                                                <div class="stat-text">conges</div>
+                                                {{ count($conges)}}
+                                                <div class="stat-digit"></div>
                                             </div>
                                         </div>
                                     </div>

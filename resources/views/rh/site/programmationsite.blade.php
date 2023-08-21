@@ -39,7 +39,7 @@
                         </ul>
                       </div>
                         @endif
-                          <form style="width:65%;" method="post" action="/candidats/ajouter">
+                          <form style="width:65%;" method="POST" action="/candidats/ajouter">
                             @csrf
 {{-- <div class="main-area"><div style="background-color:#FFFFFF;position:sticky;top:0;z-index:10;padding-top:0.4rem;padding-bottom:0.4rem">
     <div class="container"><a href="/9313"><div style="width:60px;height:60px;overflow:hidden;border-radius:5px"><img src="https://rooster-content-s3.s3.amazonaws.com/companyLogos/logo_glotelho.PNG_1620657093244" style="width:100%;height:100%"></div></a></div></div>

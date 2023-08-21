@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -8,7 +9,9 @@
                 <div class="card-header">{{ __('Reset Password') }}</div>
 
                 <div class="card-body">
+                    @include('_partial._flash-message')
                     <form method="POST" action="{{ route('password.update') }}">
+
                         @csrf
 
                         <input type="hidden" name="token" value="{{ $token }}">

@@ -72,13 +72,25 @@
                                         <td>{{ $value->created_at }}</td>
                                         <td class="d-flex">
 
-                                            <a href="{{ route('user.edit', ['id'=>$value->id]) }}"                     class="btn btn-warning btn-sm" title="Modifier le compte"><i
-                                                    class="fa fa-edit"></i></a>
+                                            {{-- <a href="{{ route('user.edit', ['id'=>$value->id]) }}"                     class="btn btn-warning btn-sm" title="Modifier le compte"><i
+                                                    class="fa fa-edit"></i></a> --}}
+                                                    <a href="{{ route('user.edit',['id'=>$value->id]) }}" class="btn btn-info" style="color:black;" title="Editer"><i class="fa fa-edit"></i></a>
+                                                    <a href="#" class="btn btn-danger" onclick="if(confirm('voulez vous vraiment supprimer  ?')){document.getElementById('form-{{$value->id}}').submit() }" style="color:black";title="supprimer"> <i class="fa fa-trash-o"></i></a>
+
+                                                    <form id="form-{{$value->id}}"  action="{{route('user.delete',['id'=>$value->id])}}" method="post">
+                                                      @csrf
+                                                      <input type="hidden" name="_method" value="delete">
+
                                                @if(Auth::user()->id != $value->id)
 
-                                                <button class="btn btn-danger btn-sm ml-1 " title="Supprimer"
+                                                {{-- <button class="btn btn-danger btn-sm ml-1 " title="Supprimer"
                                                         onclick="deleteUser({{ $value->id }})"><i
-                                                        class="fa fa-trash"></i></button>
+                                                        class="fa fa-trash"></i></button> --}}
+
+
+                                                          @csrf
+                                                          <input type="hidden" name="_method" value="delete">
+
 
                                                 @if($value->is_active==1)
 

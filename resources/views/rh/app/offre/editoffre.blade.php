@@ -21,9 +21,11 @@
                 <div class="card px-3">
 
                    <div class="card-body">
+                    @include('_partial._flash-message')
+
                     <div class="mt-3">
 
-                        @if (session()->has("success"))
+                        {{-- @if (session()->has("success"))
                         <div class="alert alert-success">
                           <h3>{{session()->get('success')}}</h3>
                         </div>
@@ -36,49 +38,60 @@
                           @endforeach
                         </ul>
                       </div>
-                        @endif
-                          <form style="width:65%;" method="post" action="{{route('offre.edit',['offre'=>$offre->offre_id])}}">
+                        @endif --}}
+                          <form style="width:65%"  method="post" action="{{route('offre.edit',['offre'=>$offre->offre_id])}}">
 
 
                             @csrf
                             <input type="hidden" name="_method" value="put">
-                            <div class="mb-3">
-                                <label for="nom_offre" class="form-label">Titre de l'offre</label>
-                                <input type="text" class="form-control"  required name="nom_offre" id="nom_offre ">
+                            <div class="mb-3" style="color:black;">
+                                <label for="nom_offre" class="form-label"  style="color:black";>Titre de l'offre</label>
+                                <input type="text" class="form-control"  required name="nom_offre" id="nom_offre " value="{{$offre->nom_offre}}" >
                               </div>
 
 
 
                                <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">departement</label>
+                                <label for="exampleInputPassword1" class="form-label">Departement</label>
                                 <select class="form-control"  required name="departement_id">
-                                    <option value=""></option>
+
                                     @foreach($departements as $departement)
-                                    <option value="{{$departement->departement_id}}">{{$departement->nom}}</option>
+                                    <option {{ $departement->departement_id == $offre->departement_id? 'selected':''}} value="{{$departement->departement_id}}">{{$departement->nom}}</option>
                                     @endforeach
                                 </select>
                               </div>
-                              
-                              <div class="mb-3">
-                                <label for="type_offre"  class="form-label">TYPE offre</label>
-                               <textarea  class="form-control"name="type_offre" id="type_offre"></textarea>
+
+
                               </div>
 
+                              <div class="row col-md-24">
+                                <div class="mb-12" style="color:black;">
+                                    <label for="type_offre">TYPE offre</label>
+                                    <br>
+                                    <select name="type_offre" id="type_offre">
+                                        <option {{ $offre->type_offre == 'CDI'?'selected':''}} >CDI</option>
+                                        <option {{ $offre->type_offre == 'CDD'? 'selected':''}} >CDD</option>
+                                        <option {{ $offre->type_offre == 'Freelance'? 'selected':''}} >Freelance</option>
+                                        <option {{ $offre->type_offre == 'Stage Academique'? 'selected':''}} >Stage Academique</option>
+                                        <option {{ $offre->type_offre == 'Stage Proffessionnel'? 'selected':''}} >Stage Proffessionnel</option>
+                                    </select>
 
 
-                              <div class="mb-3">
-                                <label for="date_debut_offre" class="form-label">Date Debut</label>
-                                <input type="date" class="form-control" required name="date_debut_offre" id="date_debut_offre">
-                              </div>
-                              <div class="mb-3">
-                                  <label for="date_fin_offre" class="form-label">Date Fin</label>
-                                  <input type="date" class="form-control" required name="date_fin_offre" id="date_fin_offre">
                                 </div>
-                                <div class="mb-3">
-                                    <label for="description_offre"  class="form-label">Description</label>
-                                   <textarea  class="form-control"name="description_offre" id="description_offre" cols="30" rows="10"></textarea>
-                                  </div>
 
+
+                                <div class="mb-6" style="color:black">
+                                    <label for="date_debut_offre" class="form-label">Date Debut</label>
+                                    <input type="date" class="form-control" required name="date_debut_offre"
+                                        id="date_debut_offre">
+                                </div>
+                                <div class="mb-6" style="color:black">
+                                    <label for="date_fin_offre" class="form-label">Date Fin</label>
+                                    <input type="date" class="form-control" required name="date_fin_offre"
+                                        id="date_fin_offre">
+                                </div>
+
+                        </div>
                                   {{-- <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="javascript:void(0)">Form</a></li>
@@ -86,31 +99,33 @@
                                     </ol>
                                 </div> --}}
                             <!-- row -->
-                            <div class="row">
-                                <div class="col-xl-12 col-xxl-12">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h4 class="card-title">Summernote Editor</h4>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="summernote"></div>
-                                        </div>
+                            <div class="form-group" style="color:black">
+                                <input type="hidden" name="description_offre" id="description_offre"
+                                    class="description_offre">
+                                <label>
+                                    Description Offres
+                                </label>
+                                <div class="summernote" onchange="getValue()" id="description_offre">
+                                    {!!$offre->description_offre!!}
+                                </div>
+                            </div>
 
-                                        <button type="submit" class="btn btn-primary">Enregistrer</button>
-                                        <button type="submit" class="btn btn-primary">Modifier</button>
-                                        <a href="{{route('salaires')}}"class="btn btn-danger">Annuler</a>
-                                      </form>
+                                        <button type="submit" id="enregistrer" onclick="save()"
+                                        class="btn btn-primary float-right">Enregistrer </button>
 
-                                 </div>
+                                    <a href="{{ route('offres') }}"class="btn btn-danger" style="font-size: 15px;">Annuler</a>
+                            </form>
 
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+                       </div>
 
-              </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-          @stop
-          @section('script')
+    </div>
 
-          @endsection
+@stop
+@section('script')
+
+@endsection

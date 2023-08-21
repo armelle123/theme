@@ -21,9 +21,10 @@
                 <div class="card px-3">
 
                    <div class="card-body">
+                    @include('_partial._flash-message')
                     <div class="mt-3">
 
-                        @if (session()->has("success"))
+                        {{-- @if (session()->has("success"))
                         <div class="alert alert-success">
                           <h3>{{session()->get('success')}}</h3>
                         </div>
@@ -36,11 +37,11 @@
                           @endforeach
                         </ul>
                       </div>
-                        @endif
+                        @endif --}}
 
 
                         <form style="width:65%;" method="post" action="{{route('conges.update',['conge'=>$conge->conges_id])}}">
-
+                                @method('PUT')
 
                             @csrf
 

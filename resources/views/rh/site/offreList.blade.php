@@ -21,20 +21,37 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Card Title</h4>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-group">
-                            @foreach ($offres as $offre)
-                                <li class="list-group-item"><a href="{{ route('site.offre.detail',['offre_id'=>$offre->offre_id]) }}">{{ $offre->nom_offre }}</a></li>
-                            @endforeach
+                    {{-- <div class="card-header"> --}}
+                        {{-- <h4 class="card-title">Card Title</h4> --}}
+                    {{-- </div> --}}
 
-                        </ul>
+                    {{-- @dd($departements) --}}
+                    <div class="card-body" style="color:black"  style="font-size: 20px;">
+                        @foreach ($departements as $departement)
+                        @if (count($departement->offres ))
+                            <h4>{{ $departement->nom }}</h4>
+                                  <ul class="list-group">
+                                  @foreach ($departement->offres as $offre)
+                                  @if ($offre->statut_offre==1)
+                                  <li class="list-group-item">
+                                        <a href="{{ route('site.offre.detail',$offre->offre_id) }}">{{$offre->nom_offre}}</a>
+
+
+                                    </li>
+                                    <div class ="mb-2"style="color:black"> <span class="inline-value" >{{$offre->type_offre}}</span> <span class ="fa fa-globe" aria-hidden="true">Douala Cameroun Akwa</span>  </div>
+
+
+                                  @endif
+
+                                   
+                                @endforeach
+                            </ul>
+                        @endif
+
+                        @endforeach
+
                     </div>
-                    <div class="card-footer">
-                        Card footer
-                    </div>
+
                 </div>
             </div>
         </div>

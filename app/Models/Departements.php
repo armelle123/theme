@@ -15,13 +15,13 @@ class Departements extends Model
         'nom',
         'deleted',
     ];
-    public function User(){
+    public function user(){
         return $this->belongsto(User::class );
     }
 
 
-    public function Offres(){
-        return $this->hasMany(Offres::class);
+    public function offres(){
+        return $this->hasMany(Offres::class,'departement_id','departement_id');
     }
 
 }

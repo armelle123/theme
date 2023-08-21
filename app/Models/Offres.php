@@ -4,11 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+// use App\Models\Offres::SATUT_VALIDE;
 
 class Offres extends Model
 {
+    // const STATUT_VALIDER = 'valider';
+    // const STATUT_ANNULER = 'annuler';
     protected $primaryKey='offre_id';
     protected $table='offres';
+
+
 
     protected $fillable = [
 
@@ -27,7 +32,13 @@ class Offres extends Model
     }
 
     public function Departements(){
-        return $this->belongsto(Departements::class);
+        return $this->belongsto(Departements::class,'departement_id','departement_id');
     }
+    // public function statut_offre(){
+    //     return $this->belongsto(statut_offre::class );
+
+    // }
+
+
 
 }

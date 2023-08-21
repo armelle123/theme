@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Fichiers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+// use BarryvdhDomPDFFacade as PDF;
 
 class FichiersController extends Controller
 {
@@ -55,7 +56,7 @@ class FichiersController extends Controller
 
                 $fichier->save();
 
-                return redirect()->back()->with('succes', 'le fichier a ete bien ajouter');
+                return redirect()->back()->with('success', 'le fichier a ete bien ajouter');
 
         }
         // $fichier = new Fichiers([
@@ -103,14 +104,37 @@ public function edit($fichier_id){
     $fichier = Fichiers::find($fichier_id)->delete();
     // dd($conges);
     if($fichier){
-        return back()->with("successDelete","le conges supprimer avec succes");
+        return back()->with("success","le fichiers supprimer avec succes");
 
     }
 
-    return back()->with("successDelete","Erreur lors de la suppression");
+    return back()->with("danger","Erreur lors de la suppression");
 
 
   }
+
+ 
+
+//    public function printPDF(){
+//     $data =[
+
+//     ];
+//     $pdf = PDF::loadView('rh.app.archives.Listarchives',$data);
+//    return view('rh.app.archives.Listarchives',compact("fichiers"));
+//  }
+//   public function rechercher (Request $request){
+//     $search = $request->query('search');
+//     $fichiers= Fichiers::query()
+//     ->where('titre_fichier','LIKE',"%{$search}%")
+//     ->orWhere ('type_fichier','LIKE',"%{$search}%")
+//     ->orWhere ('description_fichier','LIKE',"%{$search}%")
+//     ->orWhere ('chemin_fichier','LIKE',"%{$search}%")
+
+//     ->paginate(10);
+//     return view('rh.app.archives.Listarchives',compact("fichiers"));
+//   }
+
+
 }
 
 

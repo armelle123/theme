@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Candidats;
+use App\Models\Departements;
 use App\Models\Offres;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,8 +13,11 @@ class SiteController extends Controller
     // retourne la paage du site avec la liste des offres
     public function index()
     {
-        $offres = Offres::all();
-        return view('rh.site.offreList', compact('offres'));
+        // dd(Departements::all()->offres);
+         $offres = Offres::all();
+        $departements = Departements::with('offres')->get();
+        $departements = Departements::with('offres')->get();
+        return view('rh.site.offreList', compact('departements','offres'));
     }
     public function detail($offre_id)
     {
@@ -34,6 +38,7 @@ class SiteController extends Controller
             "diplome_bts_cand" => 'required|mimes:pdf,doc,docs|max:2048',
             "diplome_licence_cand" => 'mimes:pdf,doc,docs|max:2048',
             "diplome_masteur_cand" => 'mimes:pdf,doc,docs|max:2048',
+
         ]);
 
         if ($request->hasFile('cv_cand') && $request->file('cv_cand')->isValid()) {
@@ -86,9 +91,9 @@ class SiteController extends Controller
         ]);
         if ($candidat) {
 
-            return redirect('/site/offre/postuler')->with('success', 'demande creer');
+            return redirect()->back()->with('success', 'demande creer');
         }
-        return redirect('/site/offre/postuler')->with('danger', 'Une erreur s\'est produite');
+        return redirect()->back()->with('danger', 'Une erreur s\'est produite');
     }
 
 
@@ -194,7 +199,23 @@ class SiteController extends Controller
 
     //     }
 
-public function  enregistrer(){
-    return view ('/site/offre/postuler');
+// public function  enregistrer(){
+    // return view ('/site/offre/postuler');
+// }
+public function offresbyDepartement($departement){
+
+    $offres = Offres::where('departement',$departement)->get();
+    return view('rh.site.offreList',compact('offres','departements'));
 }
+// public function showdepartements(){
+//      $departements = Offres::distinct('departement_id')->pluck('departement_id');
+//      return view('rh.site.offreList', compact('departements'));
+
+// }
+//  public function print(){
+//     // return view('rh.app.archives.Listarchives',compact("fichiers"));
+//       return view('rh.site.candidatcreate', compact("offre"));
+//    }
+
 }
+

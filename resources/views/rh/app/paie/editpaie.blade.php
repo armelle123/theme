@@ -21,9 +21,11 @@
                 <div class="card px-3">
 
                    <div class="card-body">
+                    @include('_partial._flash-message')
+
                     <div class="mt-3">
 
-                        @if (session()->has("success"))
+                        {{-- @if (session()->has("success"))
                         <div class="alert alert-success">
                           <h3>{{session()->get('success')}}</h3>
                         </div>
@@ -36,7 +38,7 @@
                           @endforeach
                         </ul>
                       </div>
-                        @endif
+                        @endif --}}
 
                         <form style="width:65%;" method="post" action="{{route('salaire.edit',['salaire'=>$salaire->salaire_id])}}">
 
@@ -50,13 +52,14 @@
                               </div> --}}
                               <div class="mb-3">
                                 <label for="montant_salaire"  class="form-label">Montant</label>
-                                  <input type="integer" class="form-control"  required name="montant_salaire" id="montant_salaire">
+                                  <input type="integer" class="form-control"  required name="montant_salaire" id="montant_salaire" value="{{$salaire->montant_salaire}}">
                                 </div>
                                 <div class="mb-3">
                                 <label for="mois"  class="form-label">Mois</label>
-                                  <input type="month" class="form-control"  required name="mois" id="mois">
+                                  <input type="month" class="form-control"  required name="mois" id="mois"  value="{{$salaire->mois}}">
                                 </div>
-                                <div class="mb-3">
+                                </div>
+                                {{-- <div class="mb-3">
                                   <label for="exampleInputPassword1" class="form-label">Users</label>
                                   <select class="form-control"  required name="id">
                                       <option value=""></option>
@@ -64,11 +67,11 @@
                                       <option value="{{$user->id}}">{{$user->firstname}}</option>
                                       @endforeach
                                   </select>
-                                </div>
+                                </div> --}}
 
                                  <div class="mb-3">
                                   <label for="exampleInputPassword1" class="form-label">Types</label>
-                                  <select  class="form-control" name="type_salaires" id="type_salaires">
+                                  <select  class="form-control" name="type_salaires" id="type_salaires" value="{{$salaire->type_salaires}}">
                                    <option value="Avances">Avances</option>
                                     <option value="Total">Total</option>
 
@@ -77,10 +80,10 @@
 
                                    <div class="mb-3">
                                       <label for="commentaire"  class="form-label">Commantaires</label>
-                                     <textarea  class="form-control"name="commentaire" id="commentaire" cols="30" rows="10"></textarea>
+                                     <textarea  class="form-control"name="commentaire" id="commentaire"value="{{$salaire->commentaire}} cols="30" rows="10"></textarea>
                                     </div>
 
-                              <button type="submit" class="btn btn-primary">Enregistrer</button>
+                              {{-- <button type="submit" class="btn btn-primary">Enregistrer</button> --}}
                               <button type="submit" class="btn btn-primary">Modifier</button>
                               <a href="{{route('salaires')}}"class="btn btn-danger">Annuler</a>
                             </form>

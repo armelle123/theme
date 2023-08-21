@@ -59,7 +59,7 @@
                                             <div class="form-group">
                                                 <label for="lastname" class="">{{ __('Nom') }}&nbsp;<span
                                                         class="text-danger">*</span></label>
-                                                <input id="lastname" type="text"
+                                                <input id="lastname" type="text" 
                                                        class="form-control edit-info @error('name') is-invalid @enderror"
                                                        name="name" disabled
                                                        value="{{ $user->lastname }}" required

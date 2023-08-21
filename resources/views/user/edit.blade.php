@@ -26,17 +26,17 @@
                         <h4 class="card-title"></h4>
                         <form method="POST" action="{{ route('user.edit.store') }}" id="registerForm">
                             @csrf
-                            <input type="hidden" name="userid" value="{{ $user->id }}">
+                            <input type="hidden" name="userid" value="{{ $users->id }}">
 
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="lastname" class="">{{ __('Nom') }}&nbsp;<span
                                             class="text-danger">*</span></label>
                                     <input id="lastname" type="text"
-                                           class="form-control @error('name') is-invalid @enderror" name="name"
-                                           value="{{ $user->lastname }}" required autocomplete="name" autofocus>
+                                           class="form-control @error('name') is-invalid @enderror" name="lastname"
+                                           value="{{ $users->lastname }}" autocomplete="lastname" autofocus>
 
-                                    @error('name')
+                                    @error('lastname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -48,7 +48,7 @@
 
                                     <input id="firstname" type="text"
                                            class="form-control @error('name') is-invalid @enderror" name="firstname"
-                                           value="{{ $user->firstname }}" autocomplete="firstname" autofocus>
+                                           value="{{ $users->firstname }}" autocomplete="firstname" autofocus>
 
                                     @error('firstname')
                                     <span class="invalid-feedback" role="alert">
@@ -65,7 +65,7 @@
 
                                     <input id="email" type="email"
                                            class="form-control @error('email') is-invalid @enderror" name="email"
-                                           value="{{ $user->email }}" required autocomplete="email">
+                                           value="{{ $users->email }}" required autocomplete="email">
 
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -82,7 +82,7 @@
 
                                     <input id="cf-phone" name="phone" type="tel"
                                            class="form-control @error('phone') is-invalid @enderror" minlength="8"
-                                           maxlength="14" value="{{ $user->phone }}" required>
+                                           maxlength="14" value="{{ $users->phone }}" required>
                                     @error('phone')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -123,7 +123,7 @@
                                 </div>
                             </div>
                             @if(Auth::user()->is_admin ==0)
-                                <input type="hidden" value="{{ $user->is_admin }}" name="role">
+                                <input type="hidden" value="{{ $users->is_admin }}" name="role">
                             @endif
 
 {{--                            <div class="row">--}}

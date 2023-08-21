@@ -48,6 +48,6 @@
     <div class="alert alert-danger alert-dismissible fade show">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
         </button>
-        <strong>Veuillez vérifier le formulaire ci-dessous pour les erreurs</strong>
+        <strong>{{ implode('', $errors->all('<div>:message</div><br>')) }}</strong>
     </div>
 @endif

@@ -5,6 +5,11 @@ use App\Models\Candidats;
 use App\Models\Offres;
 use Illuminate\Http\Request;
 use illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use LeagueFlysystemFilessystem;
+use League\Flysystem\Adapter\Local;
+use PHPUnit\Util\Filesystem;
+
 class CandidatsController extends Controller
 {
     //  public function index()
@@ -134,5 +139,62 @@ class CandidatsController extends Controller
 
     //   }
 
+    public function enregistrerFichierRecu(){
+        $candidats =Candidats::all();
+        // $candidats = new Local('/public/candidature');
+        return view('rh.app.recu.index',compact("candidats"));
+        /*
+        $candidats = Candidats::where('candidat_id')->get();
+       // return view ('rh.app.recu.index', compact('fichiers'));
+       // $fichiers = Fichiers::where('fichier_id',auth()->user()->id)->get();
+       // $fichiers = Storage::fichiers('public');
+       $candidats = new Local('/public/candidature');
+       // $filesystem = new Filesystem($fichiers);
+       // $files = $filesystem->$listcontents('/public/fichier');
+       // return view('rh.app.recu.index', );
+       return view ('rh.app.recu.index', compact('candidats'));
+            */
+     }
 
-}
+
+     public function indexCandidat(){
+        $candidats =Candidats::orderby("candidat_id","desc")->get->paginate(5);
+        return view('rh.app.recu.index',compact("candidats"));
+      }
+
+      public function delete($candidat_id){
+        // $motif = $conges ->motif ." ".$conges->description;
+
+        $candidats = Candidats::find($candidat_id)->delete();
+        // dd($conges);
+        if($candidats){
+            return back()->with("success","le candidats supprimer avec succes");
+
+        }
+
+        return back()->with("danger","Erreur lors de la suppression");
+
+
+      }
+      public function valider($id){
+        Candidats::where('candidat_id',$id)->update([
+            'statuts_cand'=>1
+         ]);
+
+
+        return back()->with("success","candidature validé avec succes");
+
+
+      }
+      public function annuler($id){
+     Candidats::where('candidat_id',$id)->update([
+        'statuts_cand'=>-1
+     ]);
+
+        return back()->with("success","candidature  annulé avec succes");
+
+
+      }
+    }
+
+
